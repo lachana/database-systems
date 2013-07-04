@@ -1,4 +1,4 @@
-package finalProject;
+package airTraffic;
 
 public class Test {
 

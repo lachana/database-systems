@@ -1,4 +1,4 @@
-package finalProject;
+package airTraffic;
 
 import java.sql.Date;
 
