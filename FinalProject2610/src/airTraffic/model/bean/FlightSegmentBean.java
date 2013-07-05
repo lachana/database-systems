@@ -1,4 +1,4 @@
-package airTraffic;
+package airTraffic.model.bean;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -11,7 +11,28 @@ public class FlightSegmentBean {
 	private String gate_nr;
 	private Date boarding_time;
 	private Date arriving_time;
-	private Date departin_time;
+	private Date departure_time;
+	private String departure_airport;
+	private String arrival_airport;
+	private String operated_by;
+	public String getOperated_by() {
+		return operated_by;
+	}
+	public void setOperated_by(String operated_by) {
+		this.operated_by = operated_by;
+	}
+	public Date getDeparture_time() {
+		return departure_time;
+	}
+	public void setDeparture_time(Date departure_time) {
+		this.departure_time = departure_time;
+	}
+	public String getDeparture_airport() {
+		return departure_airport;
+	}
+	public void setDeparture_airport(String departure_airport) {
+		this.departure_airport = departure_airport;
+	}
 	public Date getDate() {
 		return date;
 	}
@@ -49,11 +70,11 @@ public class FlightSegmentBean {
 	public void setArriving_time(Date arriving_time) {
 		this.arriving_time = arriving_time;
 	}
-	public Date getDepartin_time() {
-		return departin_time;
+	public String getArrival_airport() {
+		return arrival_airport;
 	}
-	public void setDepartin_time(Date departin_time) {
-		this.departin_time = departin_time;
+	public void setArrival_airport(String arrival_airport) {
+		this.arrival_airport = arrival_airport;
 	}
 	
 	

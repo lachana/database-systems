@@ -1,4 +1,4 @@
-package airTraffic;
+package airTraffic.model.bean;
 
 import java.util.Date;
 

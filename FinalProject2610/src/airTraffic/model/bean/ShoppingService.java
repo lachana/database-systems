@@ -1,4 +1,4 @@
-package airTraffic;
+package airTraffic.model.bean;
 
 public class ShoppingService {
 
