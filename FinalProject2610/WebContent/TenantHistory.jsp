@@ -10,7 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Current tenant information</title>
+<title>Tenant history</title>
 </head>
 <body>
 <a href = "ShoppingArea.jsp">Back to the list of shopping areas</a>
@@ -21,14 +21,14 @@
     		int IntId = Integer.parseInt(Id);
     		
     		TenantDAO dao = new TenantDAO();
-    		List<Tenant> tenants = dao.ViewTenantActive(IntId);
+    		List<Tenant> tenants = dao.ViewTenantAll(IntId);
     		
     	%>
     	    	
      <% if (request.getAttribute("error") != null) { %>
         	<h1>Tenant not found!</h1>
         <% } else { %>
-        <h1>Current tenants information</h1>
+        <h1>All tenants of shopping area</h1>
         
         <TABLE border="1" style="background-color: #ffffcc;">
 <tr>
@@ -47,6 +47,9 @@
         <td width="20%">
           <div align="left">Email</div>
         </td>
+        <td width="20%">
+          <div align="left">Is active</div>
+        </td>
        </tr>
 
 <% for (Tenant tenant : tenants) {%>
@@ -56,11 +59,9 @@
 <TD><%=tenant.getFirstName()%></TD>
 <td><%=tenant.getAddress() %></td>
 <td><%=tenant.getEmail() %> </td>
+<td><%=tenant.isActive() %>></td>
 </TR>
 <% } }%>
 </TABLE>
-
-<a href = "TenantHistory.jsp?key=<%= IntId %>">View the rent history for this shopping area</a>
-        
 </body>
 </html>

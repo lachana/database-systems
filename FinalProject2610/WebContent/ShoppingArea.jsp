@@ -40,7 +40,7 @@
         <td width="20%">
           <div align="left">Offered by</div>
         </td>
-        <td width="20%">
+        <td width="30%">
           <div align="left"></div>
         </td>
     </tr>
@@ -53,7 +53,7 @@
 <td><%=shop.getAssignment() %></td>
 <td><%=shop.getSize() %> </td>
 <td><%=shop.getOfferedBy() %></td>
-<TD><a href="TenantInfo.jsp?key=<%=area.getsId()%>">View tenant info</a></TD>
+<TD><a href="TenantInfo.jsp?key=<%=shop.getsId()%>">View tenant info</a></TD>
 </TR>
 <% } }
 %>
