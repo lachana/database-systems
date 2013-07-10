@@ -13,5 +13,5 @@ public abstract class AbstractDAO {
 			e.printStackTrace();
 		}
 		return DriverManager.getConnection("jdbc:postgresql:airtravel", "postgres", "dblab13");
-	}
+	} 
 }
