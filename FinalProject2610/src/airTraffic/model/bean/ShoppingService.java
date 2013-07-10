@@ -15,12 +15,14 @@ public class ShoppingService {
 	}
 	public void setsId(int sId) {
 		this.sId = sId;
+		
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+		
 	}
 	public String getAssignment() {
 		return assignment;

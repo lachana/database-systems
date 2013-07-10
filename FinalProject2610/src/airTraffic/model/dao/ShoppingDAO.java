@@ -16,8 +16,8 @@ public List<ShoppingService> ViewAreas(){
 	List<ShoppingService> ar = new ArrayList<ShoppingService>();
 		
 		String query = new StringBuilder()
-			.append("SELECT * ")
-			.append("FROM shopping_service")
+			.append("SELECT * from shopping_service")
+		//	.append("FROM shopping_service")
 			.toString();
 
 		try (Connection connection = getConnection();
@@ -25,6 +25,7 @@ public List<ShoppingService> ViewAreas(){
 				
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
 				while (resultSet.next()) {
+					
 					ShoppingService area = new ShoppingService();
 					area.setsId(resultSet.getInt(1));
 					area.setName(resultSet.getString(2));

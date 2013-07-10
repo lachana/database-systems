@@ -46,13 +46,13 @@
 
 <% for (ShoppingService shop : areas) {%>
 <TR>
-<TD><%=area.getsId()%></TD>
-<TD><%=area.getName()%></TD>
-<TD><%=area.getLocation()%></TD>
-<td><%=area.getAssignment() %>></td>
-<td><%=area.getSize() %>> </td>
-<td><%=area.getOfferedBy() %>></td>
-<TD><a href="AreaRent.jsp?key=<%=area.getsId()%>">Rent</a></TD>
+<TD><%=shop.getsId()%></TD>
+<TD><%=shop.getName()%></TD>
+<TD><%=shop.getLocation()%></TD>
+<td><%=shop.getAssignment() %></td>
+<td><%=shop.getSize() %> </td>
+<td><%=shop.getOfferedBy() %></td>
+<TD><a href="TenantInfo.jsp?key=<%=area.getsId()%>">View tenant info</a></TD>
 </TR>
 <% } }
 %>
