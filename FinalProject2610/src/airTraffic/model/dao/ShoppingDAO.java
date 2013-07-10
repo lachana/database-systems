@@ -1,0 +1,50 @@
+package airTraffic.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import airTraffic.model.bean.ShoppingService;
+
+public class ShoppingDAO extends AbstractDAO {
+
+public List<ShoppingService> ViewAreas(){
+
+	List<ShoppingService> ar = new ArrayList<ShoppingService>();
+		
+		String query = new StringBuilder()
+			.append("SELECT * ")
+			.append("FROM shopping_service")
+			.toString();
+
+		try (Connection connection = getConnection();
+			 PreparedStatement preparedStatement = connection.prepareStatement(query);) {
+				
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+				while (resultSet.next()) {
+					ShoppingService area = new ShoppingService();
+					area.setsId(resultSet.getInt(1));
+					area.setName(resultSet.getString(2));
+					area.setLocation(resultSet.getString(3));
+					area.setAssignment(resultSet.getString(4));
+					area.setSize(resultSet.getInt(5));
+					area.setAreaNumber(resultSet.getInt(6));
+					area.setOfferedBy(resultSet.getString(7));
+					ar.add(area);
+				
+				} 
+				resultSet.close();	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ar;
+	}
+
+
+}
