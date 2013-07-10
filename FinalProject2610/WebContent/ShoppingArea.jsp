@@ -11,6 +11,7 @@
 <title>Shopping areas</title>
 </head>
 <body>
+<a href = "MainPage.jsp">Back to the main page</a>
  <%
     	  ShoppingDAO dao = new ShoppingDAO(); 
           List<ShoppingService> areas = dao.ViewAreas();

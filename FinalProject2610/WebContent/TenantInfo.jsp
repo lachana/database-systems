@@ -14,6 +14,8 @@
 </head>
 <body>
 <a href = "ShoppingArea.jsp">Back to the list of shopping areas</a>
+<p> or </p>
+<a href = "MainPage.jsp">Back to the main page</a>
     	<% String Id = request.getParameter("key");
     		int IntId = Integer.parseInt(Id);
     		TenantDAO dao = new TenantDAO();
