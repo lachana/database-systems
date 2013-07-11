@@ -17,6 +17,8 @@
           List<ShoppingService> areas = dao.ViewAreas();
   %>
 <h2>List of all shopping areas</h2>
+<P></P>
+<a href = "AddArea.jsp?action=insert">Add new area</a>
 <% if (request.getAttribute("error") != null) { %>
         	<h1>There is no info</h1>
         <% } else { %>
@@ -28,19 +30,22 @@
         <td width="10%">
           <div align="left">Name</div>
         </td>
-        <td width="20%">
+        <td width="10%">
           <div align="left">Location</div>
         </td>
-        <td width="20%">
+        <td width="10%">
           <div align="left">Assignment</div>
         </td>
-        <td width="20%">
+        <td width="10%">
           <div align="left">Size</div>
         </td>
-        <td width="20%">
+        <td width="10%">
+          <div align="left">Area number</div>
+        </td>
+        <td width="10%">
           <div align="left">Offered by</div>
         </td>
-        <td width="30%">
+        <td width="10%">
           <div align="left"></div>
         </td>
     </tr>
@@ -52,6 +57,7 @@
 <TD><%=shop.getLocation()%></TD>
 <td><%=shop.getAssignment() %></td>
 <td><%=shop.getSize() %> </td>
+<td><%=shop.getAreaNumber() %></td>
 <td><%=shop.getOfferedBy() %></td>
 <TD><a href="TenantInfo.jsp?key=<%=shop.getsId()%>">View tenant info</a></TD>
 </TR>

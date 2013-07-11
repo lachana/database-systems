@@ -11,7 +11,7 @@
 <a href = "ShoppingArea.jsp">Back to the list of shopping areas</a>
 <p> or </p>
 <a href = "MainPage.jsp">Back to the main page</a>
-<form method="post" action='AreaHandler' name="frmAddArea"><input
+<form method="post" action="ShoppinngArea" name="frmAddArea"><input
 type="hidden" name="action" value="insert" />
 <h2>Add New Area</h2>
 <table>
@@ -34,6 +34,10 @@ type="hidden" name="action" value="insert" />
 <tr>
 <td>Size</td>
 <td><input type="text" name="size" /></td>
+</tr>
+<tr>
+<td>Area number</td>
+<td><input type="text" name="number" /></td>
 </tr>
 <tr>
 <td>Offered by</td>

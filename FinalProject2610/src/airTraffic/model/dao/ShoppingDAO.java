@@ -47,5 +47,26 @@ public List<ShoppingService> ViewAreas(){
 		return ar;
 	}
 
+public void addArea(ShoppingService shopping) {
+	
+	
+	String sql = "INSERT INTO shopping_service (sid, name, location, assignment, size, area_number, offered_by)" +
+            " VALUES (?, ?, ?, ?, ?, ?, ? )";
+      try (Connection connection = getConnection();
+       			 PreparedStatement ps = connection.prepareStatement(sql);) {
+       			        
+        ps.setInt(1, shopping.getsId());
+        ps.setString(2, shopping.getName());
+        ps.setString(3, shopping.getLocation()); 
+        ps.setString(4, shopping.getAssignment());
+        ps.setInt(5, shopping.getSize()); 
+        ps.setInt(6, shopping.getAreaNumber());
+        ps.setString(7, shopping.getOfferedBy());
+        ps.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
 }
