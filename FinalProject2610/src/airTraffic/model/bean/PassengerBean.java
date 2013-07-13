@@ -1,6 +1,6 @@
 package airTraffic.model.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class PassengerBean {
 

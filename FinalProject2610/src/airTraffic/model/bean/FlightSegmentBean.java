@@ -15,6 +15,13 @@ public class FlightSegmentBean {
 	private String departure_airport;
 	private String arrival_airport;
 	private String operated_by;
+	private int flightBy;
+	public int getFlightBy() {
+		return flightBy;
+	}
+	public void setFlightBy(int flightBy) {
+		this.flightBy = flightBy;
+	}
 	public String getOperated_by() {
 		return operated_by;
 	}

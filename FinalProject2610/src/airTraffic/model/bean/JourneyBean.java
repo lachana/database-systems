@@ -7,6 +7,14 @@ public class JourneyBean {
 	private String travelAgency;
 	private String paymentType;
 	private boolean travelCancelInsurance;
+	private String booked_by;
+	
+	public String getBooked_by() {
+		return booked_by;
+	}
+	public void setBooked_by(String booked_by) {
+		this.booked_by = booked_by;
+	}
 	public int getjId() {
 		return jId;
 	}

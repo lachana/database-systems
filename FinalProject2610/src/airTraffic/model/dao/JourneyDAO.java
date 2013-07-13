@@ -27,6 +27,7 @@ public class JourneyDAO extends AbstractDAO {
 					journey.setTravelAgency(rs.getString(3));
 					journey.setPaymentType(rs.getString(4));
 					journey.setTravelCancelInsurance(rs.getBoolean(5));
+					journey.setBooked_by(passportId);
 					
 					journeys.add(journey);
 				}
@@ -34,5 +35,39 @@ public class JourneyDAO extends AbstractDAO {
 		}
 		
 		return journeys;
+	}
+	
+	public void insertJourney(JourneyBean journey) throws SQLException{
+		String query = "INSER INTO journey(travel_agency, payment_type, travel_cancel_insurance, booked_by) VALUES(?, ?, ?, ?)";
+		
+		try(Connection connection = getConnection();
+				PreparedStatement pStmt = connection.prepareStatement(query);){
+			pStmt.setString(1, journey.getTravelAgency());
+			pStmt.setString(2, journey.getPaymentType());
+			pStmt.setBoolean(3, journey.isTravelCancelInsurance());
+			pStmt.setString(4, journey.getBooked_by());
+			
+			pStmt.execute();
+				
+			
+		}
+	}
+	
+	public int getLastInserId() throws SQLException{
+		int result = 0;
+		String query = "SELECT max(j_id) FROM journey";
+		
+		try(Connection connection = getConnection();
+				PreparedStatement pStmt = connection.prepareStatement(query);){
+			
+			try(ResultSet rs = pStmt.executeQuery();){
+				
+				if(rs.next()){	
+					result = rs.getInt(1);
+				}
+			} 
+		}
+		
+		return result;
 	}
 }

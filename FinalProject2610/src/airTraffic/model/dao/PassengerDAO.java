@@ -30,4 +30,21 @@ public class PassengerDAO extends AbstractDAO {
 		
 		return passenger;
 	}
-}
+	
+	public void insertPassenger(PassengerBean passenger) throws SQLException{
+		String query = "INSER INTO passenger VALUES(?, ?, ?, ?, ?)";
+		
+		try(Connection connection = getConnection();
+				PreparedStatement pStmt = connection.prepareStatement(query);){
+			pStmt.setString(1, passenger.getPassportId());
+			pStmt.setString(2, passenger.getFirstName());
+			pStmt.setString(3, passenger.getLastName());
+			pStmt.setString(4, passenger.getAddress());
+			pStmt.setDate(5, passenger.getDateOfBirth());
+			
+			pStmt.execute();
+				
+			}
+		}
+	}
+
