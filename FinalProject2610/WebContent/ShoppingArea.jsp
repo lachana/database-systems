@@ -18,7 +18,7 @@
   %>
 <h2>List of all shopping areas</h2>
 <P></P>
-<a href = "AddArea.jsp?action=insert">Add new area</a>
+<%--<a href = "AddArea.jsp?action=insert">Add new area</a> --%>
 <% if (request.getAttribute("error") != null) { %>
         	<h1>There is no info</h1>
         <% } else { %>
