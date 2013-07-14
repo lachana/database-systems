@@ -7,6 +7,7 @@
 <title>Passenger</title>
 </head>
 <body>
+<a href="/FinalProject2610/MainPage.jsp">Home</a><br>
 <%if(request.getAttribute("error") != null){ %>
 <h2>Please enter all data correctly</h2>
 <%} %>

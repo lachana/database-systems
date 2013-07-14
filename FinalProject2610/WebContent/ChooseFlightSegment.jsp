@@ -11,6 +11,7 @@
 <title>ChooseFlightSegment</title>
 </head>
 <body>
+<a href="/FinalProject2610/MainPage.jsp">Home</a><br>
 <%PassengerBean passenger = (PassengerBean)session.getAttribute("passenger");
 LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>) session.getAttribute("foundFlights");
 LinkedList<String> noFirstClassSeats = (LinkedList<String>)session.getAttribute("noFirstClassSeats");
@@ -70,6 +71,18 @@ You are logged in as: <%=passenger.getFirstName() %> <%=passenger.getLastName() 
 		<td><%= flight.getDeparture_time() %></td>
 		<td><%= flight.getBoarding_time() %></td>
 		<td><%= flight.getArriving_time() %></td>
+		<td><%if(noFirstClassSeats.contains(flight.getFlight_number())){ %>
+		no seat left <%} else{ %> 
+		<a href="/FinalProject2610/flightSegment?number=<%=flight.getFlight_number()%>&class=firstClass">book firstClass</a><%} %>
+		</td>
+		<td><%if(noBusinessClassSeats.contains(flight.getFlight_number())){ %>
+		no seat left <%} else{ %> 
+		<a href="/FinalProject2610/flightSegment?number=<%=flight.getFlight_number()%>&class=businessClass">book businessClass</a><%} %>
+		</td>
+		<td><%if(noEconomyClassSeats.contains(flight.getFlight_number())){ %>
+		no seat left <%} else{ %> 
+		<a href="/FinalProject2610/flightSegment?number=<%=flight.getFlight_number()%>&class=economyClass">book economyClass</a><%} %>
+		</td>
 	</tr>
 	<%} %>
 	<%} %>

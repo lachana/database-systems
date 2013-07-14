@@ -11,6 +11,7 @@
 <title>FlightSegment</title>
 </head>
 <body>
+<a href="/FinalProject2610/MainPage.jsp">Home</a><br>
 <%PassengerBean passenger = (PassengerBean)session.getAttribute("passenger");
 LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>) session.getAttribute("flightSegments");%>
 You are logged in as: <%=passenger.getFirstName() %> <%=passenger.getLastName() %><br><br>
