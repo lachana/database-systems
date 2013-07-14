@@ -28,7 +28,7 @@
      <% if (request.getAttribute("error") != null) { %>
         	<h1>Tenant not found!</h1>
         <% } else { %>
-        <h1>All tenants of shopping area</h1>
+        <h1>All tenants of shopping area <%=IntId%> </h1>
         
         <TABLE border="1" style="background-color: #ffffcc;">
 <tr>
@@ -59,7 +59,7 @@
 <TD><%=tenant.getFirstName()%></TD>
 <td><%=tenant.getAddress() %></td>
 <td><%=tenant.getEmail() %> </td>
-<td><%=tenant.isActive() %>></td>
+<td><%=tenant.isActive() %></td>
 </TR>
 <% } }%>
 </TABLE>

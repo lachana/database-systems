@@ -28,7 +28,7 @@
      <% if (request.getAttribute("error") != null) { %>
         	<h1>Tenant not found!</h1>
         <% } else { %>
-        <h1>Current tenants information</h1>
+        <h1>Current tenant's information</h1>
         
         <TABLE border="1" style="background-color: #ffffcc;">
 <tr>

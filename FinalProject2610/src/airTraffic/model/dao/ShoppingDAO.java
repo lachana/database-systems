@@ -11,21 +11,21 @@ import airTraffic.model.bean.ShoppingService;
 
 public class ShoppingDAO extends AbstractDAO {
 
-public List<ShoppingService> ViewAreas(){
+	public List<ShoppingService> ViewAreas(){
 
-	List<ShoppingService> ar = new ArrayList<ShoppingService>();
-		
+		List<ShoppingService> ar = new ArrayList<ShoppingService>();
+
 		String query = new StringBuilder()
-			.append("SELECT * from shopping_service")
+		.append("SELECT * from shopping_service order by s_id")
 		//	.append("FROM shopping_service")
-			.toString();
+		.toString();
 
 		try (Connection connection = getConnection();
-			 PreparedStatement preparedStatement = connection.prepareStatement(query);) {
-				
+				PreparedStatement preparedStatement = connection.prepareStatement(query);) {
+
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
 				while (resultSet.next()) {
-					
+
 					ShoppingService area = new ShoppingService();
 					area.setsId(resultSet.getInt(1));
 					area.setName(resultSet.getString(2));
@@ -35,7 +35,7 @@ public List<ShoppingService> ViewAreas(){
 					area.setAreaNumber(resultSet.getInt(6));
 					area.setOfferedBy(resultSet.getString(7));
 					ar.add(area);
-				
+
 				} 
 				resultSet.close();	
 			} catch (SQLException e) {
@@ -47,26 +47,26 @@ public List<ShoppingService> ViewAreas(){
 		return ar;
 	}
 
-public void addArea(ShoppingService shopping) {
-	
-	
-	String sql = "INSERT INTO shopping_service (sid, name, location, assignment, size, area_number, offered_by)" +
-            " VALUES (?, ?, ?, ?, ?, ?, ? )";
-      try (Connection connection = getConnection();
-       			 PreparedStatement ps = connection.prepareStatement(sql);) {
-       			        
-        ps.setInt(1, shopping.getsId());
-        ps.setString(2, shopping.getName());
-        ps.setString(3, shopping.getLocation()); 
-        ps.setString(4, shopping.getAssignment());
-        ps.setInt(5, shopping.getSize()); 
-        ps.setInt(6, shopping.getAreaNumber());
-        ps.setString(7, shopping.getOfferedBy());
-        ps.executeUpdate();
+	public void addArea(ShoppingService shopping) {
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
+
+		String sql = "INSERT INTO shopping_service (sid, name, location, assignment, size, area_number, offered_by)" +
+				" VALUES (?, ?, ?, ?, ?, ?, ? )";
+		try (Connection connection = getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);) {
+
+			ps.setInt(1, shopping.getsId());
+			ps.setString(2, shopping.getName());
+			ps.setString(3, shopping.getLocation()); 
+			ps.setString(4, shopping.getAssignment());
+			ps.setInt(5, shopping.getSize()); 
+			ps.setInt(6, shopping.getAreaNumber());
+			ps.setString(7, shopping.getOfferedBy());
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
