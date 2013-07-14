@@ -33,4 +33,12 @@
     <servlet-name>FlightSegmentServlet</servlet-name>
     <url-pattern>/flightSegment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Flights</servlet-name>
+    <servlet-class>tum.de.labcourse.finalproject.FlightSegmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Flights</servlet-name>
+    <url-pattern>/flights</url-pattern>
+  </servlet-mapping>
 </web-app>
