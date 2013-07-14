@@ -15,7 +15,7 @@ public class FlightSegmentDAO extends AbstractDAO {
 	public LinkedList<FlightSegmentBean> getFlightSegmentsByDateAndDepAndDest(Date date, String departure, String destination)
 			throws SQLException{
 		LinkedList<FlightSegmentBean> flights = new LinkedList<FlightSegmentBean>();
-		String query = "SELECT * FROM flight_segment WHERE date = ? AND destination_airport = ? AND departure_airport = ?";
+		String query = "SELECT * FROM flight_segment WHERE date = ? AND arrival_airport = ? AND departure_airport = ?";
 		
 		try(Connection connection = getConnection();
 				PreparedStatement pStmt = connection.prepareStatement(query);){
@@ -39,12 +39,12 @@ public class FlightSegmentDAO extends AbstractDAO {
 					flight.setFlightBy(rs.getInt(10));
 					
 					LinkedList<String> marketingCarriers = new LinkedList<String>();
-					query = "SELECT marketing_carrier_code FROM marketing_carrier WHERE flight_number = ? AND date = ?";
-					PreparedStatement pStmt2 = connection.prepareStatement(query);
+					String query2 = "SELECT marketing_carrier_code FROM marketing_carrier WHERE flight_number = ? AND date = ?";
+					PreparedStatement pStmt2 = connection.prepareStatement(query2);
 					pStmt2.setString(1, flight.getFlight_number());
 					pStmt2.setDate(2, date);
 					
-					try(ResultSet rs2 = pStmt.executeQuery();){
+					try(ResultSet rs2 = pStmt2.executeQuery();){
 						while(rs2.next()){
 							marketingCarriers.add(rs2.getString(1));
 						}
@@ -60,7 +60,7 @@ public class FlightSegmentDAO extends AbstractDAO {
 	
 	public LinkedList<FlightSegmentBean> getFlightSegmentsByJId(int jId) throws SQLException{
 		LinkedList<FlightSegmentBean> flights = new LinkedList<FlightSegmentBean>();
-		String query = "SELECT * FROM flight_segment f, belongs_to b WHERE f.date = b.date AND f.flight_number = b.flight_number AND b.j_id = ?";
+		String query = "SELECT * FROM flight_segment f, consists_of c WHERE f.date = c.date AND f.flight_number = c.flight_number AND c.j_id = ?";
 		
 		try(Connection connection = getConnection();
 				PreparedStatement pStmt = connection.prepareStatement(query);){

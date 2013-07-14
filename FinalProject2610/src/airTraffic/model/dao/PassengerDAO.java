@@ -32,7 +32,7 @@ public class PassengerDAO extends AbstractDAO {
 	}
 	
 	public void insertPassenger(PassengerBean passenger) throws SQLException{
-		String query = "INSER INTO passenger VALUES(?, ?, ?, ?, ?)";
+		String query = "INSERT INTO passenger VALUES(?, ?, ?, ?, ?)";
 		
 		try(Connection connection = getConnection();
 				PreparedStatement pStmt = connection.prepareStatement(query);){

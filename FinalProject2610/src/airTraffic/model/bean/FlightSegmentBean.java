@@ -1,6 +1,7 @@
 package airTraffic.model.bean;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.LinkedList;
 
 public class FlightSegmentBean {
@@ -9,9 +10,9 @@ public class FlightSegmentBean {
 	private String flight_number;
 	private LinkedList<String> maerketing_carrier_flight_numbers;
 	private String gate_nr;
-	private Date boarding_time;
-	private Date arriving_time;
-	private Date departure_time;
+	private Time boarding_time;
+	private Time arriving_time;
+	private Time departure_time;
 	private String departure_airport;
 	private String arrival_airport;
 	private String operated_by;
@@ -28,10 +29,10 @@ public class FlightSegmentBean {
 	public void setOperated_by(String operated_by) {
 		this.operated_by = operated_by;
 	}
-	public Date getDeparture_time() {
+	public Time getDeparture_time() {
 		return departure_time;
 	}
-	public void setDeparture_time(Date departure_time) {
+	public void setDeparture_time(Time departure_time) {
 		this.departure_time = departure_time;
 	}
 	public String getDeparture_airport() {
@@ -65,16 +66,16 @@ public class FlightSegmentBean {
 	public void setGate_nr(String gate_nr) {
 		this.gate_nr = gate_nr;
 	}
-	public Date getBoarding_time() {
+	public Time getBoarding_time() {
 		return boarding_time;
 	}
-	public void setBoarding_time(Date boarding_time) {
+	public void setBoarding_time(Time boarding_time) {
 		this.boarding_time = boarding_time;
 	}
-	public Date getArriving_time() {
+	public Time getArriving_time() {
 		return arriving_time;
 	}
-	public void setArriving_time(Date arriving_time) {
+	public void setArriving_time(Time arriving_time) {
 		this.arriving_time = arriving_time;
 	}
 	public String getArrival_airport() {

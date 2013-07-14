@@ -38,7 +38,7 @@ public class JourneyDAO extends AbstractDAO {
 	}
 	
 	public void insertJourney(JourneyBean journey) throws SQLException{
-		String query = "INSER INTO journey(travel_agency, payment_type, travel_cancel_insurance, booked_by) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO journey(travel_agency, payment_type, travel_cancel_insurance, booked_by) VALUES(?, ?, ?, ?)";
 		
 		try(Connection connection = getConnection();
 				PreparedStatement pStmt = connection.prepareStatement(query);){
@@ -53,7 +53,7 @@ public class JourneyDAO extends AbstractDAO {
 		}
 	}
 	
-	public int getLastInserId() throws SQLException{
+	public int getLastInsertId() throws SQLException{
 		int result = 0;
 		String query = "SELECT max(j_id) FROM journey";
 		
