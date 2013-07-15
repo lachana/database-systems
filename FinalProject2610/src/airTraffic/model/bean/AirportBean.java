@@ -1,6 +1,6 @@
 package airTraffic.model.bean;
 
-public class Airport {
+public class AirportBean {
 	
 	private String name;
 	private String aviationCode;

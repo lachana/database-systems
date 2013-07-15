@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import airTraffic.model.bean.Tenant;
+import airTraffic.model.bean.TenantBean;
 
 public class TenantDAO extends AbstractDAO{
 	
-	public List<Tenant> ViewTenantActive(int sID){
+	public List<TenantBean> ViewTenantActive(int sID){
 		
-		List<Tenant> ar = new ArrayList<Tenant>();	
+		List<TenantBean> ar = new ArrayList<TenantBean>();	
 		
 			String query = new StringBuilder()
 				.append("select rent.s_id, tenant.t_id, tenant.first_name, tenant.last_name, tenant.address, tenant.email"+
@@ -30,7 +30,7 @@ public class TenantDAO extends AbstractDAO{
 				try (ResultSet resultSet = preparedStatement.executeQuery();) {
 					while (resultSet.next()) {
 						
-						Tenant tenant = new Tenant();
+						TenantBean tenant = new TenantBean();
 						
 						tenant.settId(resultSet.getInt(2));
 						tenant.setFirstName(resultSet.getString(3));
@@ -51,9 +51,9 @@ public class TenantDAO extends AbstractDAO{
 		}
 
 	
-public List<Tenant> ViewTenantAll(int sID){
+public List<TenantBean> ViewTenantAll(int sID){
 		
-		List<Tenant> ar = new ArrayList<Tenant>();	
+		List<TenantBean> ar = new ArrayList<TenantBean>();	
 		
 			String query = new StringBuilder()
 				.append("select rent.s_id, tenant.t_id, tenant.first_name, tenant.last_name, tenant.address, tenant.email, tenant.is_active"+
@@ -69,7 +69,7 @@ public List<Tenant> ViewTenantAll(int sID){
 				try (ResultSet resultSet = preparedStatement.executeQuery();) {
 					while (resultSet.next()) {
 						
-						Tenant tenant = new Tenant();
+						TenantBean tenant = new TenantBean();
 						
 						tenant.settId(resultSet.getInt(2));
 						tenant.setFirstName(resultSet.getString(3));

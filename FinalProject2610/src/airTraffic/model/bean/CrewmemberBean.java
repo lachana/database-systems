@@ -1,6 +1,7 @@
-package de.tum.labcourse.finalproject;
+package airTraffic.model.bean;
 
 import java.sql.Date;
+
 
 public class CrewmemberBean extends PersonnelBean {
 	

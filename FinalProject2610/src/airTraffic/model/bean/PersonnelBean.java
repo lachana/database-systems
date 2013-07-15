@@ -2,7 +2,7 @@ package airTraffic.model.bean;
 
 import java.sql.Date;
 
-public abstract class Personnel {
+public abstract class PersonnelBean {
 
 	
 	private Integer p_id;
@@ -11,7 +11,7 @@ public abstract class Personnel {
 	private Date date_of_birth;
 	private Double salary;
 
-	public Personnel(Integer p_id, String first_name, String last_name,
+	public PersonnelBean(Integer p_id, String first_name, String last_name,
 			Date date_of_birth, Double salary ) {
 		super();
 		this.p_id = p_id;

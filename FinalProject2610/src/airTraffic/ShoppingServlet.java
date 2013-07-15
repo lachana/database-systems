@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import airTraffic.model.bean.ShoppingService;
+import airTraffic.model.bean.ShoppingServiceBean;
 import airTraffic.model.dao.ShoppingDAO;
 
 public class ShoppingServlet extends HttpServlet {
@@ -45,7 +45,7 @@ public class ShoppingServlet extends HttpServlet {
 		if(!((sId)== null) && action.equalsIgnoreCase("insert"))
 		{
 			int id = Integer.parseInt(sId);
-			ShoppingService area = new ShoppingService();
+			ShoppingServiceBean area = new ShoppingServiceBean();
 
 			area.setsId(id);
 			area.setName(request.getParameter("name"));

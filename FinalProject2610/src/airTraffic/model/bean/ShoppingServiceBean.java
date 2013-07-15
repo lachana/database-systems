@@ -1,6 +1,6 @@
 package airTraffic.model.bean;
 
-public class ShoppingService {
+public class ShoppingServiceBean {
 
 	private int sId;
 	private String name;

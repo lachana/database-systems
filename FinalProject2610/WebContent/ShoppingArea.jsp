@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@page import="airTraffic.model.bean.ShoppingService" %>
+<%@page import="airTraffic.model.bean.ShoppingServiceBean" %>
 <%@page import="airTraffic.model.dao.ShoppingDAO" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="area" scope="request" class="airTraffic.model.bean.ShoppingService" />
+<jsp:useBean id="area" scope="request" class="airTraffic.model.bean.ShoppingServiceBean" />
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,15 +13,19 @@
 <body>
 <a href = "MainPage.jsp">Back to the main page</a>
  <%
-    	  ShoppingDAO dao = new ShoppingDAO(); 
-          List<ShoppingService> areas = dao.ViewAreas();
-  %>
+ 	ShoppingDAO dao = new ShoppingDAO(); 
+           List<ShoppingServiceBean> areas = dao.ViewAreas();
+ %>
 <h2>List of all shopping areas</h2>
 <P></P>
 <%--<a href = "AddArea.jsp?action=insert">Add new area</a> --%>
-<% if (request.getAttribute("error") != null) { %>
+<%
+	if (request.getAttribute("error") != null) {
+%>
         	<h1>There is no info</h1>
-        <% } else { %>
+        <%
+        	} else {
+        %>
 <TABLE border="1" style="background-color: #ffffcc;">
 <tr>
         <td width="10%">
@@ -50,7 +54,9 @@
         </td>
     </tr>
 
-<% for (ShoppingService shop : areas) {%>
+<%
+	for (ShoppingServiceBean shop : areas) {
+%>
 <TR>
 <TD><%=shop.getsId()%></TD>
 <TD><%=shop.getName()%></TD>

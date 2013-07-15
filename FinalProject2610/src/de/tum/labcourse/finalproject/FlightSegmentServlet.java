@@ -38,7 +38,7 @@ public class FlightSegmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FlightSegmentDAO dao = new FlightSegmentDAO();
 		//Get all flights
-		List<FlightSegment> allFlights;
+		List<FlightSegmentBean> allFlights;
 		try {
 			allFlights = dao.getAvailableFlights();
 		} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class FlightSegmentServlet extends HttpServlet {
 	    DateFormat timestampFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 		FlightSegmentDAO flights = new FlightSegmentDAO();
-		FlightSegment flight = new FlightSegment();
+		FlightSegmentBean flight = new FlightSegmentBean();
 		flight.setFlight_number(request.getParameter("flightNumber"));
 		try {
 			flight.setDate(dateFormat.parse(request.getParameter("flightDate")));

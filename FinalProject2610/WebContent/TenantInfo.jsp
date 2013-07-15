@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@page import="airTraffic.model.bean.ShoppingService" %>
+<%@page import="airTraffic.model.bean.ShoppingServiceBean" %>
 <%@page import="airTraffic.model.dao.ShoppingDAO" %>
-<%@page import="airTraffic.model.bean.Tenant" %>
+<%@page import="airTraffic.model.bean.TenantBean" %>
 <%@page import="airTraffic.model.dao.TenantDAO" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="ten" scope="request" class="airTraffic.model.bean.Tenant" />
+<jsp:useBean id="ten" scope="request" class="airTraffic.model.bean.TenantBean" />
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,17 +17,21 @@
 <p> or </p>
 <a href = "MainPage.jsp">Back to the main page</a>
     	
-    	<% String Id = request.getParameter("key");
-    		int IntId = Integer.parseInt(Id);
-    		
-    		TenantDAO dao = new TenantDAO();
-    		List<Tenant> tenants = dao.ViewTenantActive(IntId);
-    		
-    	%>
+    	<%
+    	    		String Id = request.getParameter("key");
+    	    	    		int IntId = Integer.parseInt(Id);
+    	    	    		
+    	    	    		TenantDAO dao = new TenantDAO();
+    	    	    		List<TenantBean> tenants = dao.ViewTenantActive(IntId);
+    	    	%>
     	    	
-     <% if (request.getAttribute("error") != null) { %>
+     <%
+    	    	     	if (request.getAttribute("error") != null) {
+    	    	     %>
         	<h1>Tenant not found!</h1>
-        <% } else { %>
+        <%
+        	} else {
+        %>
         <h1>Current tenant's information</h1>
         
         <TABLE border="1" style="background-color: #ffffcc;">
@@ -49,7 +53,9 @@
         </td>
        </tr>
 
-<% for (Tenant tenant : tenants) {%>
+<%
+	for (TenantBean tenant : tenants) {
+%>
 <TR>
 <TD><%=tenant.gettId()%></TD>
 <TD><%=tenant.getLastName()%></TD>

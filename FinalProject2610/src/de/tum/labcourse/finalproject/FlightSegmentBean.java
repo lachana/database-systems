@@ -3,7 +3,7 @@ package de.tum.labcourse.finalproject;
 import java.util.Date;
 import java.sql.Timestamp;
 
-public class FlightSegment {
+public class FlightSegmentBean {
 
 	private Date date ;
 	private String flight_number;

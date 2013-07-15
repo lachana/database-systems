@@ -3,7 +3,7 @@
 <%@page import="airTraffic.model.bean.*" %>
 <%@page import="airTraffic.model.dao.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="airport" scope="request" class="airTraffic.model.bean.ShoppingService" />
+<jsp:useBean id="airport" scope="request" class="airTraffic.model.bean.ShoppingServiceBean" />
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

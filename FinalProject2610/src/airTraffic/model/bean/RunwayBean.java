@@ -1,6 +1,6 @@
 package airTraffic.model.bean;
 
-public class Runway {
+public class RunwayBean {
 	
 	private int rId;
 	private boolean isAvailable;

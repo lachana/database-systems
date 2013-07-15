@@ -2,7 +2,7 @@ package airTraffic.model.bean;
 
 import java.util.Date;
 
-public class Tenant {
+public class TenantBean {
 	
 	private int tId;
 	private boolean isActive;

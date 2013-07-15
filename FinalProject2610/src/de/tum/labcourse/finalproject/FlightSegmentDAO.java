@@ -10,9 +10,9 @@ import java.util.List;
 
 public class FlightSegmentDAO extends AbstractDAO {
 
-	public List<FlightSegment> getAvailableFlights() throws SQLException {
+	public List<FlightSegmentBean> getAvailableFlights() throws SQLException {
 
-		List<FlightSegment> availableFlights = new ArrayList<FlightSegment>();
+		List<FlightSegmentBean> availableFlights = new ArrayList<FlightSegmentBean>();
 
 		String query = new StringBuilder().append("SELECT * ")
 				.append("FROM flight_segment ").append("ORDER BY flight_number")
@@ -24,7 +24,7 @@ public class FlightSegmentDAO extends AbstractDAO {
 		ResultSet resultSet = preparedStatement.executeQuery();
 		while (resultSet.next()) {
 
-			FlightSegment flight = new FlightSegment();
+			FlightSegmentBean flight = new FlightSegmentBean();
 			flight.setFlight_number(resultSet.getString(1));
 			flight.setDate(resultSet.getDate(2));
 			flight.setGate_nr(resultSet.getString(3));
@@ -43,8 +43,8 @@ public class FlightSegmentDAO extends AbstractDAO {
 		return availableFlights;
 	}
 
-	public void addNewFlight(FlightSegment newFlight) throws SQLException {
-		List<FlightSegment> updatedFlights = new ArrayList<FlightSegment>();
+	public void addNewFlight(FlightSegmentBean newFlight) throws SQLException {
+		List<FlightSegmentBean> updatedFlights = new ArrayList<FlightSegmentBean>();
 
 		String query = new StringBuilder()
 				.append("INSERT INTO flight_segment (flight_number, date, gate_nr, boarding_time,"

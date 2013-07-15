@@ -1,4 +1,4 @@
-package de.tum.labcourse.finalproject;
+package airTraffic.model.bean;
 
 public class AirlineBean {
 	public String abbreviation;

@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import airTraffic.model.bean.ShoppingService;
+import airTraffic.model.bean.ShoppingServiceBean;
 
 public class ShoppingDAO extends AbstractDAO {
 
-	public List<ShoppingService> ViewAreas(){
+	public List<ShoppingServiceBean> ViewAreas(){
 
-		List<ShoppingService> ar = new ArrayList<ShoppingService>();
+		List<ShoppingServiceBean> ar = new ArrayList<ShoppingServiceBean>();
 
 		String query = new StringBuilder()
 		.append("SELECT * from shopping_service order by s_id")
@@ -26,7 +26,7 @@ public class ShoppingDAO extends AbstractDAO {
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
 				while (resultSet.next()) {
 
-					ShoppingService area = new ShoppingService();
+					ShoppingServiceBean area = new ShoppingServiceBean();
 					area.setsId(resultSet.getInt(1));
 					area.setName(resultSet.getString(2));
 					area.setLocation(resultSet.getString(3));
@@ -47,7 +47,7 @@ public class ShoppingDAO extends AbstractDAO {
 		return ar;
 	}
 
-	public void addArea(ShoppingService shopping) {
+	public void addArea(ShoppingServiceBean shopping) {
 
 
 		String sql = "INSERT INTO shopping_service (sid, name, location, assignment, size, area_number, offered_by)" +
