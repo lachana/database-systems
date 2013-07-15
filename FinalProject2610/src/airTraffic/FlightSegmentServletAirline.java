@@ -1,4 +1,4 @@
-package de.tum.labcourse.finalproject;
+package airTraffic;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,17 +17,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import airTraffic.model.bean.FlightSegmentBeanAirline;
+import airTraffic.model.dao.FlightSegmentDAOAirline;
+
 /**
  * Servlet implementation class FlightSegmentServlet
  */
 @WebServlet(name = "FlightSegmenServlet", description = "Existing flights + new flight", urlPatterns = { "/FlightSegmenServlet" })
-public class FlightSegmentServlet extends HttpServlet {
+public class FlightSegmentServletAirline extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FlightSegmentServlet() {
+    public FlightSegmentServletAirline() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,9 +39,9 @@ public class FlightSegmentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FlightSegmentDAO dao = new FlightSegmentDAO();
+		FlightSegmentDAOAirline dao = new FlightSegmentDAOAirline();
 		//Get all flights
-		List<FlightSegmentBean> allFlights;
+		List<FlightSegmentBeanAirline> allFlights;
 		try {
 			allFlights = dao.getAvailableFlights();
 		} catch (SQLException e) {
@@ -61,8 +64,8 @@ public class FlightSegmentServlet extends HttpServlet {
 	    DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
 	    DateFormat timestampFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-		FlightSegmentDAO flights = new FlightSegmentDAO();
-		FlightSegmentBean flight = new FlightSegmentBean();
+		FlightSegmentDAOAirline flights = new FlightSegmentDAOAirline();
+		FlightSegmentBeanAirline flight = new FlightSegmentBeanAirline();
 		flight.setFlight_number(request.getParameter("flightNumber"));
 		try {
 			flight.setDate(dateFormat.parse(request.getParameter("flightDate")));

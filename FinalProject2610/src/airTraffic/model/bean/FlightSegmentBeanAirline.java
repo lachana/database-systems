@@ -1,9 +1,9 @@
-package de.tum.labcourse.finalproject;
+package airTraffic.model.bean;
 
 import java.util.Date;
 import java.sql.Timestamp;
 
-public class FlightSegmentBean {
+public class FlightSegmentBeanAirline {
 
 	private Date date ;
 	private String flight_number;

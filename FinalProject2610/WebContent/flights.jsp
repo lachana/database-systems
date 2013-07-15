@@ -1,6 +1,6 @@
 <%@ 
 	page
-	import="java.util.ArrayList,de.tum.labcourse.finalproject.FlightSegmentBean"%>
+	import="java.util.ArrayList,airTraffic.model.bean.FlightSegmentBeanAirline"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,9 +29,9 @@
 			</tr>
 		</thead>
 		<%
-			ArrayList<FlightSegmentBean> allFlights = null;
+			ArrayList<FlightSegmentBeanAirline> allFlights = null;
 				allFlights = (ArrayList) request.getAttribute("allFlights");
-				for(FlightSegmentBean f : allFlights) {
+				for(FlightSegmentBeanAirline f : allFlights) {
 		%>
 		<tr>
 				<td><% out.print(f.getFlight_number()); %></td>

@@ -1,4 +1,4 @@
-package de.tum.labcourse.finalproject;
+package airTraffic.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,11 +8,13 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightSegmentDAO extends AbstractDAO {
+import airTraffic.model.bean.FlightSegmentBeanAirline;
 
-	public List<FlightSegmentBean> getAvailableFlights() throws SQLException {
+public class FlightSegmentDAOAirline extends AbstractDAO {
 
-		List<FlightSegmentBean> availableFlights = new ArrayList<FlightSegmentBean>();
+	public List<FlightSegmentBeanAirline> getAvailableFlights() throws SQLException {
+
+		List<FlightSegmentBeanAirline> availableFlights = new ArrayList<FlightSegmentBeanAirline>();
 
 		String query = new StringBuilder().append("SELECT * ")
 				.append("FROM flight_segment ").append("ORDER BY flight_number")
@@ -24,12 +26,12 @@ public class FlightSegmentDAO extends AbstractDAO {
 		ResultSet resultSet = preparedStatement.executeQuery();
 		while (resultSet.next()) {
 
-			FlightSegmentBean flight = new FlightSegmentBean();
+			FlightSegmentBeanAirline flight = new FlightSegmentBeanAirline();
 			flight.setFlight_number(resultSet.getString(1));
 			flight.setDate(resultSet.getDate(2));
 			flight.setGate_nr(resultSet.getString(3));
 			flight.setBoarding_time(resultSet.getDate(4));
-			flight.setMaerketing_carrier_flight_numbers(FlightSegmentDAO.split(resultSet.getString(5), ", "));
+			flight.setMaerketing_carrier_flight_numbers(FlightSegmentDAOAirline.split(resultSet.getString(5), ", "));
 			flight.setArriving_time(resultSet.getTimestamp(6));
 			flight.setDeparture_time(resultSet.getTimestamp(7));
 			flight.setArrival_airport(resultSet.getString(8));
@@ -43,8 +45,8 @@ public class FlightSegmentDAO extends AbstractDAO {
 		return availableFlights;
 	}
 
-	public void addNewFlight(FlightSegmentBean newFlight) throws SQLException {
-		List<FlightSegmentBean> updatedFlights = new ArrayList<FlightSegmentBean>();
+	public void addNewFlight(FlightSegmentBeanAirline newFlight) throws SQLException {
+		List<FlightSegmentBeanAirline> updatedFlights = new ArrayList<FlightSegmentBeanAirline>();
 
 		String query = new StringBuilder()
 				.append("INSERT INTO flight_segment (flight_number, date, gate_nr, boarding_time,"
@@ -61,7 +63,7 @@ public class FlightSegmentDAO extends AbstractDAO {
 		pStmt.setTimestamp(4, new Timestamp(newFlight.getBoarding_time().getTime()));
 		pStmt.setString(
 				5,
-				FlightSegmentDAO.join(
+				FlightSegmentDAOAirline.join(
 						newFlight.getMaerketing_carrier_flight_numbers(), ", "));
 		pStmt.setTimestamp(6, newFlight.getArriving_time());
 		pStmt.setTimestamp(7, newFlight.getDeparture_time());
