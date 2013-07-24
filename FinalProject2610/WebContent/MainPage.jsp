@@ -18,7 +18,7 @@
 <SELECT name="jump" size="1">
 <OPTION value="flights" SELECTED> Airline</option>
 <OPTION value="ShoppingArea.jsp">Airport</option>
-<OPTION value="passenger">Passenger</option>
+<OPTION value="ShoppingArea.jsp">Passenger</option>
 </SELECT>
 <INPUT type=button onClick= "location = '' + document.mapform.jump.options[ document.mapform.jump.selectedIndex ].value;" value="Go!">
 </FORM>
