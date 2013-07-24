@@ -50,7 +50,7 @@ public class ShoppingDAO extends AbstractDAO {
 	public void addArea(ShoppingServiceBean shopping) {
 
 
-		String sql = "INSERT INTO shopping_service (sid, name, location, assignment, size, area_number, offered_by)" +
+		String sql = "INSERT INTO shopping_service (s_id, name, location, assignment, size, area_number, offered_by)" +
 				" VALUES (?, ?, ?, ?, ?, ?, ? )";
 		try (Connection connection = getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {

@@ -1,6 +1,12 @@
 package airTraffic;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,14 +14,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import airTraffic.model.bean.FlightSegmentBean;
 import airTraffic.model.bean.ShoppingServiceBean;
+import airTraffic.model.dao.FlightSegmentDAOAirline;
 import airTraffic.model.dao.ShoppingDAO;
 
 public class ShoppingServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingArea.jsp");
+		
+		ShoppingDAO dao = new ShoppingDAO();
+		//Get all areas
+		List<ShoppingServiceBean> allAreas;
+		allAreas = dao.ViewAreas();
+		//Add them as attributes to the request to make available in the JSP view
+		request.setAttribute("areas", allAreas);
+		//Set view
+		RequestDispatcher view = request.getRequestDispatcher("ShoppingArea.jsp");
+		view.forward(request, response); 
+		
+		
+		
+		/* RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingArea.jsp");
 
 		String redirect="";
 		String action = request.getParameter("action");
@@ -26,7 +47,7 @@ public class ShoppingServlet extends HttpServlet {
 		} else {
 			redirect = "/AddArea.jsp";
 		}
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response); */
 	}
 
 	private int parseInt(String parameter) {
@@ -36,8 +57,25 @@ public class ShoppingServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		ShoppingDAO dao = new ShoppingDAO();
+		ShoppingServiceBean area = new ShoppingServiceBean();
+		
+		area.setsId(Integer.parseInt(request.getParameter("sid")));
+		area.setName(request.getParameter("name"));
+		area.setLocation(request.getParameter("location"));
+		area.setAssignment(request.getParameter("assignment"));
+		area.setSize(Integer.parseInt (request.getParameter("size")));
+		area.setAreaNumber(Integer.parseInt (request.getParameter("number")));
+		area.setOfferedBy(request.getParameter("offeredby"));
+			
+		
+		dao.addArea(area);
+        response.sendRedirect("ShoppingArea.jsp");
+		
+		
 
-		doGet(request, response);
+	/*	doGet(request, response);
 		String redirect="";
 		String sId = request.getParameter("sid");        
 		String action = request.getParameter("action");
@@ -61,6 +99,6 @@ public class ShoppingServlet extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingArea.jsp");
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response); */
 	}
 }

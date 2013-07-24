@@ -41,4 +41,12 @@
     <servlet-name>Flights</servlet-name>
     <url-pattern>/flights</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShoppingServlet</servlet-name>
+    <servlet-class>airTraffic.ShoppingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingServlet</servlet-name>
+    <url-pattern>/shopping</url-pattern>
+  </servlet-mapping>
 </web-app>

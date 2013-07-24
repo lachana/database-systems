@@ -11,8 +11,7 @@
 <a href = "ShoppingArea.jsp">Back to the list of shopping areas</a>
 <p> or </p>
 <a href = "MainPage.jsp">Back to the main page</a>
-<form method="post" action="ShoppingArea" name="formAddArea"><input
-type="hidden" name="action" value="insert" />
+<form method="post" action="shopping">
 <h2>Add New Area</h2>
 <table>
 <tr>
@@ -45,7 +44,7 @@ type="hidden" name="action" value="insert" />
 </tr>
 <tr>
 <td></td>
-<td><input type="submit" value="Submit" /></td>
+<td><input type="submit" value="Add new area" /></td>
 </tr>
 </table>
 </form>
