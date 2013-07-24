@@ -2,13 +2,11 @@ package airTraffic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import airTraffic.model.bean.FlightSegmentBeanAirline;
+import airTraffic.model.bean.FlightSegmentBean;
 import airTraffic.model.dao.FlightSegmentDAOAirline;
 
 /**
@@ -26,14 +24,10 @@ import airTraffic.model.dao.FlightSegmentDAOAirline;
 @WebServlet(name = "FlightSegmenServlet", description = "Existing flights + new flight", urlPatterns = { "/FlightSegmenServlet" })
 public class FlightSegmentServletAirline extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FlightSegmentServletAirline() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +35,7 @@ public class FlightSegmentServletAirline extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FlightSegmentDAOAirline dao = new FlightSegmentDAOAirline();
 		//Get all flights
-		List<FlightSegmentBeanAirline> allFlights;
+		List<FlightSegmentBean> allFlights;
 		try {
 			allFlights = dao.getAvailableFlights();
 		} catch (SQLException e) {
@@ -60,38 +54,38 @@ public class FlightSegmentServletAirline extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
-	    DateFormat timestampFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+	    
 		FlightSegmentDAOAirline flights = new FlightSegmentDAOAirline();
-		FlightSegmentBeanAirline flight = new FlightSegmentBeanAirline();
-		flight.setFlight_number(request.getParameter("flightNumber"));
+		FlightSegmentBean flight = new FlightSegmentBean();
 		try {
-			flight.setDate(dateFormat.parse(request.getParameter("flightDate")));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("flightDate"));
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			flight.setDate(sqlDate);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+	    DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+
+		
+		flight.setFlight_number(request.getParameter("flightNumber"));
 
 		flight.setGate_nr(request.getParameter("gateNr"));
 
 		try {
-			flight.setBoarding_time(timeFormat.parse(request.getParameter("boardingTime")));
+			flight.setBoarding_time(new Time (timeFormat.parse(request.getParameter("boardingTime")).getTime()));
 		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		flight.setMaerketing_carrier_flight_numbers(request.getParameter("marketingFlightsNumber").split(", "));
-		try {
-			flight.setArriving_time(new Timestamp (timestampFormat.parse(request.getParameter("arrivingTime")).getTime()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			// Throw 500 ERROR if something goes wrong
+						response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+						return;
 		}
 
 		try {
-			flight.setDeparture_time(new Timestamp (timestampFormat.parse(request.getParameter("departureTime")).getTime()));
+			flight.setDeparture_time(new Time (timeFormat.parse(request.getParameter("departureTime")).getTime()));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			// Throw 500 ERROR if something goes wrong
+						response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+						return;
 		}
 
 		flight.setArrival_airport(request.getParameter("arrivalAirport"));
