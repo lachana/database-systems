@@ -13,15 +13,19 @@
 <body>
 <a href = "MainPage.jsp">Back to the main page</a>
  <%
-    	  ShoppingDAO dao = new ShoppingDAO(); 
-          List<ShoppingServiceBean> areas = dao.ViewAreas();
-  %>
+ 	ShoppingDAO dao = new ShoppingDAO(); 
+           List<ShoppingServiceBean> areas = dao.ViewAreas();
+ %>
 <h2>List of all shopping areas</h2>
 <P></P>
-<a href = "AddArea.jsp?action=insert">Add new area</a>
-<% if (request.getAttribute("error") != null) { %>
+<%--<a href = "AddArea.jsp?action=insert">Add new area</a> --%>
+<%
+	if (request.getAttribute("error") != null) {
+%>
         	<h1>There is no info</h1>
-        <% } else { %>
+        <%
+        	} else {
+        %>
 <TABLE border="1" style="background-color: #ffffcc;">
 <tr>
         <td width="10%">
@@ -50,7 +54,9 @@
         </td>
     </tr>
 
-<% for (ShoppingServiceBean shop : areas) {%>
+<%
+	for (ShoppingServiceBean shop : areas) {
+%>
 <TR>
 <TD><%=shop.getsId()%></TD>
 <TD><%=shop.getName()%></TD>
