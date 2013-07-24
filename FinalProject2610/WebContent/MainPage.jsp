@@ -3,7 +3,7 @@
 <%@page import="airTraffic.model.bean.*" %>
 <%@page import="airTraffic.model.dao.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="airport" scope="request" class="airTraffic.model.bean.ShoppingServiceBean" />
+<jsp:useBean id="airport" scope="request" class="airTraffic.model.bean.ShoppingService" />
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,7 +18,7 @@
 <SELECT name="jump" size="1">
 <OPTION value="ShoppingArea.jsp" SELECTED> Airline</option>
 <OPTION value="ShoppingArea.jsp">Airport</option>
-<OPTION value="passenger">Passenger</option>
+<OPTION value="ShoppingArea.jsp">Passenger</option>
 </SELECT>
 <INPUT type=button onClick= "location = '' + document.mapform.jump.options[ document.mapform.jump.selectedIndex ].value;" value="Go!">
 </FORM>
