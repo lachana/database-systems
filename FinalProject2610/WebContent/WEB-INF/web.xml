@@ -35,7 +35,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Flights</servlet-name>
-    <servlet-class>tum.de.labcourse.finalproject.FlightSegmentServlet</servlet-class>
+    <servlet-class>airTraffic.FlightSegmentServletAirline</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Flights</servlet-name>

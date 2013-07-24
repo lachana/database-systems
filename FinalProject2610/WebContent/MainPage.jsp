@@ -16,7 +16,7 @@
 <p> Please select the view you are interested in </p>
 <FORM name="mapform" method="POST">
 <SELECT name="jump" size="1">
-<OPTION value="ShoppingArea.jsp" SELECTED> Airline</option>
+<OPTION value="flights" SELECTED> Airline</option>
 <OPTION value="ShoppingArea.jsp">Airport</option>
 <OPTION value="passenger">Passenger</option>
 </SELECT>
