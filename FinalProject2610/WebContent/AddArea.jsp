@@ -11,7 +11,7 @@
 <a href = "ShoppingArea.jsp">Back to the list of shopping areas</a>
 <p> or </p>
 <a href = "MainPage.jsp">Back to the main page</a>
-<form method="post" action="ShoppinngArea" name="frmAddArea"><input
+<form method="post" action="ShoppingArea" name="formAddArea"><input
 type="hidden" name="action" value="insert" />
 <h2>Add New Area</h2>
 <table>
