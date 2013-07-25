@@ -1,6 +1,6 @@
 <%@ 
 	page
-	import="java.util.ArrayList,airTraffic.model.bean.FlightSegmentBean"%>
+	import="java.util.ArrayList,airTraffic.model.bean.FlightSegmentBean, java.util.LinkedList, java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +10,7 @@
 <title>Flights Manager</title>
 </head>
 <body>
-
+<a href="/FinalProject2610/Mainpage.jsp">home</a><br>
 	<h2>All available flights</h2>
 	<table border = "1">
 		<thead>
@@ -25,6 +25,7 @@
 				<td width=10%>To</td>
 				<td width=15%>Operated By</td>
 				<td width=15%>Flight By</td>
+				<td width=15%>MarketingCarrierNumbers</td>
 			</tr>
 		</thead>
 		<% 
@@ -43,45 +44,71 @@
 				<td><% out.print(f.getArrival_airport()); %></td>
 				<td><% out.print(f.getOperated_by()); %></td>
 				<td><% out.print(f.getFlightBy()); %></td>
-
+				<td><%
+				LinkedList<String> marketingCarriers = f.getMaerketing_carrier_flight_numbers();
+				for(Iterator<String> iter = marketingCarriers.iterator(); iter.hasNext();){
+				String carrier = iter.next();%>
+				<%= carrier %>, 
+				<%} %> <a href="/FinalProject2610/marketingCarrier?flightNumber=<%=f.getFlight_number()%>&date=<%=f.getDate()%>">add MarketingCarrier</a>
+				</td>
 		</tr>
 		<% } %>
 	</table>
 
+<%if(request.getAttribute("error") != null){%>
+<h2>Please enter valid data</h2>
+<% }%>
+
 	<h2>Add flight</h2>
 	<form method="post" action="flights">
 		<table>
-			<thead>
+			
 				<tr>
 				<td>Flight Number</td>
-				<td>Date</td>
-				<td>Gate</td>
-				<td>Boarding Time</td>
-				<td>Departure</td>
-				<td>Arrival</td>
-				<td>From</td>
-				<td>To</td>
-				<td>Operated By</td>
-				<td>Flight By</td>
-					<td>
-						<!-- Don't touch! -->
-					</td>
-				</tr>
-			</thead>
-			<tr>
 				<td><input name="flightNumber" type="text" /></td>
-				<td><input name="flightDate" type="text" /></td>
+				</tr>
+				<tr>
+				<td>Date</td>
+				<td><input name="flightDate" type="text" />(yyyy-MM-dd)</td>
+				</tr>
+				<tr>
+				<td>Gate</td>
 				<td><input name="gateNr" type="text" /></td>
-				<td><input name="boardingTime" type="text" /></td>
-				<td><input name="departureTime" type="text" /></td>
-				<td><input name="arrivingTime" type="text" /></td>
+				</tr>
+				<tr>
+				<td>Boarding Time</td>
+				<td><input name="boardingTime" type="text" />(hh:mm:ss)</td>
+				</tr>
+				<tr>
+				<td>Departure</td>
+				<td><input name="departureTime" type="text" />(hh:mm:ss)</td>
+				</tr>
+				<tr>
+				<td>Arrival</td>
+				<td><input name="arrivingTime" type="text" />(hh:mm:ss)</td>
+				</tr>
+				<tr>
+				<td>From</td>
 				<td><input name="departureAirport" type="text" /></td>
+				</tr>
+				<tr>
+				<td>To</td>
 				<td><input name="arrivalAirport" type="text" /></td>
+				</tr>
+				<tr>
+				<td>Operated By</td>
 				<td><input name="operatedBy" type="text" /></td>
+				</tr>
+				<tr>
+				<td>Flight By</td>
 				<td><input name="flightBy" type="text" /></td>
+				</tr>
+				<tr>
+				<td><!-- Don't touch! --></td>
 				<td><input type="submit" name="AddNewFlight"
 					value="Add new flight" /></td>
-			</tr>
+				</tr>
+			
 		</table>
 	</form>
 

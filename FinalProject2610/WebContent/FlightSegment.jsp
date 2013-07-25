@@ -11,7 +11,7 @@
 <title>FlightSegment</title>
 </head>
 <body>
-<a href="/FinalProject2610/MainPage.jsp">Home</a><br>
+<a href="/FinalProject2610/MainPage.jsp">Home</a> <a href="/FinalProject2610/passenger">Passenger</a><br>
 <%PassengerBean passenger = (PassengerBean)session.getAttribute("passenger");
 LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>) session.getAttribute("flightSegments");%>
 You are logged in as: <%=passenger.getFirstName() %> <%=passenger.getLastName() %><br><br>
@@ -20,6 +20,9 @@ You are logged in as: <%=passenger.getFirstName() %> <%=passenger.getLastName() 
 <h2>Please enter valid data</h2>
 <%} %>
 
+<%if(request.getAttribute("teleport") != null){ %>
+<h2>You can't go back in time or teleport</h2>
+<%} %>
 
 <%if(request.getAttribute("success") != null){ %>
 <h2>Flight successfully booked</h2>
@@ -50,12 +53,14 @@ You are logged in as: <%=passenger.getFirstName() %> <%=passenger.getLastName() 
 </table>
 
 <form name="searchFlightSegment" action="/FinalProject2610/flightSegment" method="post">
-	<fieldset>
+	<fieldset>	
 		<legend>Search for FlightSegment</legend>
-		<label>Date</label><input type="text" name="date"><br>
-		<label>Departure Airport</label><input type="text" name="departure"><br>
-		<label>Destination Airport</label><input type="text" name="destination"><br>		
-		<input type="submit" value="Search">
+		<table>
+		<tr><td><label>Date</label></td><td><input type="text" name="date">(dd-MM-yyyy)</td></tr>
+		<tr><td><label>Departure Airport</label></td><td><input type="text" name="departure"></td></tr>
+		<tr><td><label>Destination Airport</label></td><td><input type="text" name="destination"></td></tr>		
+		<tr><td></td><td><input type="submit" value="Search"></td></tr>
+	</table>
 	</fieldset>
 </form>
 </body>

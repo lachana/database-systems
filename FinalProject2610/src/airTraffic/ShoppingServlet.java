@@ -1,11 +1,6 @@
 package airTraffic;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import airTraffic.model.bean.FlightSegmentBean;
 import airTraffic.model.bean.ShoppingServiceBean;
-import airTraffic.model.dao.FlightSegmentDAOAirline;
 import airTraffic.model.dao.ShoppingDAO;
 
 public class ShoppingServlet extends HttpServlet {
@@ -50,10 +43,6 @@ public class ShoppingServlet extends HttpServlet {
 		dispatcher.forward(request, response); */
 	}
 
-	private int parseInt(String parameter) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -61,7 +50,7 @@ public class ShoppingServlet extends HttpServlet {
 		ShoppingDAO dao = new ShoppingDAO();
 		ShoppingServiceBean area = new ShoppingServiceBean();
 		
-		area.setsId(Integer.parseInt(request.getParameter("sid")));
+		
 		area.setName(request.getParameter("name"));
 		area.setLocation(request.getParameter("location"));
 		area.setAssignment(request.getParameter("assignment"));

@@ -11,7 +11,7 @@
 <title>ChooseFlightSegment</title>
 </head>
 <body>
-<a href="/FinalProject2610/MainPage.jsp">Home</a><br>
+<a href="/FinalProject2610/MainPage.jsp">Home</a> <a href="/FinalProject2610/passenger">Passenger</a><br>
 <%PassengerBean passenger = (PassengerBean)session.getAttribute("passenger");
 LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>) session.getAttribute("foundFlights");
 LinkedList<String> noFirstClassSeats = (LinkedList<String>)session.getAttribute("noFirstClassSeats");

@@ -42,33 +42,6 @@ public class FlightSegmentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			/**
-			//get session
-			HttpSession session = request.getSession();
-			LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>)session.getAttribute("foundFlights");
-			JourneyBean journey = (JourneyBean)session.getAttribute("journey");
-			PassengerBean passenger = (PassengerBean)session.getAttribute("passenger");
-			//parse parameters
-			request.setAttribute("success", true);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/FlightSegment.jsp");
-			dispatcher.forward(request, response);
-			FlightSegmentBean flight = new FlightSegmentBean();
-			String flightNumber = request.getParameter("number");
-			for(Iterator<FlightSegmentBean> iter = flightSegments.iterator(); iter.hasNext();){
-				FlightSegmentBean f = iter.next();
-				if(f.getFlight_number().equals(flightNumber)){
-					flight = f;
-					break;
-				}
-			}
-			String flightClass = request.getParameter("class");
-			//insert flightTicket
-			FlightTicketDAO fDao = new FlightTicketDAO();
-			double price = fDao.insertFlightTicket(flight, passenger.getPassportId(), flightClass, journey);
-			//update journey
-			
-			
-			**/
 			//get session
 			HttpSession session = request.getSession();
 			LinkedList<FlightSegmentBean> flightSegments = (LinkedList<FlightSegmentBean>)session.getAttribute("foundFlights");
@@ -112,11 +85,22 @@ public class FlightSegmentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
+			HttpSession session = request.getSession();
 			//get inputs
 			java.util.Date utilDate = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("date"));
 			Date date = new Date(utilDate.getTime());
 			String departure = request.getParameter("departure");
 			String destination = request.getParameter("destination");
+			//validate inputs
+			LinkedList<FlightSegmentBean> flights = (LinkedList<FlightSegmentBean>)session.getAttribute("flightSegments");
+			if(!flights.isEmpty()){
+				FlightSegmentBean flight = flights.getLast();
+				if(!departure.equals(flight.getArrival_airport()) || date.before(flight.getDate())){
+					request.setAttribute("teleport", true);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/FlightSegment.jsp");
+					dispatcher.forward(request, response);
+				}
+			} else {
 			//get flightSegments according to inputs
 			FlightSegmentDAO fDao = new FlightSegmentDAO();
 			LinkedList<FlightSegmentBean> foundFlights = fDao.getFlightSegmentsByDateAndDepAndDest(date, departure, destination);
@@ -139,14 +123,14 @@ public class FlightSegmentServlet extends HttpServlet {
 					noEconomyClassSeats.add(flight.getFlight_number());
 				}
 			}
-			//set session
-			HttpSession session = request.getSession();
+			//set session			
 			session.setAttribute("foundFlights", foundFlights);
 			session.setAttribute("noFirstClassSeats", noFirstClassSeats);
 			session.setAttribute("noBusinessClassSeats", noBusinessClassSeats);
 			session.setAttribute("noEconomyClassSeats", noEconomyClassSeats);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/ChooseFlightSegment.jsp");
 			dispatcher.forward(request, response);
+			}
 		} catch(Throwable e){
 			request.setAttribute("error", true);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/FlightSegment.jsp");

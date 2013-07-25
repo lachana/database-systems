@@ -22,13 +22,14 @@
 <form name="newPassenger" action="/FinalProject2610/passenger" method="post">
 	<fieldset>
 		<legend>New Passenger</legend>
-		<label>Add New Passenger</label>
-		<label>PassportId</label> <input type="text" name="passportId"><br>
-		<label>First Name</label> <input type="text" name="firstName"><br>
-		<label>Last Name</label> <input type="text" name="lastName"><br>
-		<label>Address</label> <input type="text" name="address"><br>
-		<label>Date of Birth</label> <input type="text" name="dateOfBirth"><br>
-		<input type="submit" value="Enter">
+		<table>
+		<tr><td><label>PassportId</label></td><td> <input type="text" name="passportId"></td></tr>
+		<tr><td><label>First Name</label></td><td> <input type="text" name="firstName"></td></tr>
+		<tr><td><label>Last Name</label></td><td> <input type="text" name="lastName"></td></tr>
+		<tr><td><label>Address</label></td><td> <input type="text" name="address"></td></tr>
+		<tr><td><label>Date of Birth</label></td><td> <input type="text" name="dateOfBirth">(dd-MM-yyyy)</td></tr>
+		<tr><td></td><td><input type="submit" value="Enter"></td></tr>
+		</table>
 	</fieldset>
 </form>
 </body>

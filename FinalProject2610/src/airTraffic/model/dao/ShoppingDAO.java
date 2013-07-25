@@ -28,11 +28,11 @@ public class ShoppingDAO extends AbstractDAO {
 
 					ShoppingServiceBean area = new ShoppingServiceBean();
 					area.setsId(resultSet.getInt(1));
-					area.setName(resultSet.getString(2));
-					area.setLocation(resultSet.getString(3));
-					area.setAssignment(resultSet.getString(4));
-					area.setSize(resultSet.getInt(5));
-					area.setAreaNumber(resultSet.getInt(6));
+					area.setName(resultSet.getString(2));					
+					area.setAssignment(resultSet.getString(3));
+					area.setSize(resultSet.getInt(4));
+					area.setAreaNumber(resultSet.getInt(5));
+					area.setLocation(resultSet.getString(6));
 					area.setOfferedBy(resultSet.getString(7));
 					ar.add(area);
 
@@ -50,18 +50,18 @@ public class ShoppingDAO extends AbstractDAO {
 	public void addArea(ShoppingServiceBean shopping) {
 
 
-		String sql = "INSERT INTO shopping_service (s_id, name, location, assignment, size, area_number, offered_by)" +
-				" VALUES (?, ?, ?, ?, ?, ?, ? )";
+		String sql = "INSERT INTO shopping_service ( name, location, assignment, size, area_number, offered_by)" +
+				" VALUES ( ?, ?, ?, ?, ?, ? )";
 		try (Connection connection = getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
 
-			ps.setInt(1, shopping.getsId());
-			ps.setString(2, shopping.getName());
-			ps.setString(3, shopping.getLocation()); 
-			ps.setString(4, shopping.getAssignment());
-			ps.setInt(5, shopping.getSize()); 
-			ps.setInt(6, shopping.getAreaNumber());
-			ps.setString(7, shopping.getOfferedBy());
+			//ps.setInt(1, shopping.getsId());
+			ps.setString(1, shopping.getName());
+			ps.setString(2, shopping.getLocation()); 
+			ps.setString(3, shopping.getAssignment());
+			ps.setInt(4, shopping.getSize()); 
+			ps.setInt(5, shopping.getAreaNumber());
+			ps.setString(6, shopping.getOfferedBy());
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

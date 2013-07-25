@@ -15,10 +15,6 @@
 <h2>Add New Area</h2>
 <table>
 <tr>
-<td>Area ID</td>
-<td><input type="text" name="sid" /></td>
-</tr>
-<tr>
 <td>Name</td>
 <td><input type="text" name="name" /></td>
 </tr>

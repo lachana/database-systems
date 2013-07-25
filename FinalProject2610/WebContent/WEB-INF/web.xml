@@ -34,11 +34,11 @@
     <url-pattern>/flightSegment</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Flights</servlet-name>
-    <servlet-class>tum.de.labcourse.finalproject.FlightSegmentServlet</servlet-class>
+    <servlet-name>FlightSegmentServletAirline</servlet-name>
+    <servlet-class>airTraffic.FlightSegmentServletAirline</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Flights</servlet-name>
+    <servlet-name>FlightSegmentServletAirline</servlet-name>
     <url-pattern>/flights</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -48,5 +48,13 @@
   <servlet-mapping>
     <servlet-name>ShoppingServlet</servlet-name>
     <url-pattern>/shopping</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MarketingCarrierServlet</servlet-name>
+    <servlet-class>airTraffic.MarketingCarrierServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarketingCarrierServlet</servlet-name>
+    <url-pattern>/marketingCarrier</url-pattern>
   </servlet-mapping>
 </web-app>
