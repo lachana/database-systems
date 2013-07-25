@@ -11,15 +11,6 @@ public abstract class PersonnelBean {
 	private Date date_of_birth;
 	private Double salary;
 
-	public PersonnelBean(Integer p_id, String first_name, String last_name,
-			Date date_of_birth, Double salary ) {
-		super();
-		this.p_id = p_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.date_of_birth = date_of_birth;
-		this.salary = salary;
-	}
 
 	public Integer getPersID() {
 		return p_id;

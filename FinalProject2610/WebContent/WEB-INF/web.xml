@@ -57,4 +57,12 @@
     <servlet-name>MarketingCarrierServlet</servlet-name>
     <url-pattern>/marketingCarrier</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PersonnelServlet</servlet-name>
+    <servlet-class>airTraffic.PersonnelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonnelServlet</servlet-name>
+    <url-pattern>/personnel</url-pattern>
+  </servlet-mapping>
 </web-app>

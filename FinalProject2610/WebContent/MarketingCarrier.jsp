@@ -7,7 +7,7 @@
 <title>Add MarketingCarrier</title>
 </head>
 <body>
-<a href="/FinalProject2610/Mainpage.jsp">home</a> <a href="/FinalProject2610/flights">all FlightSegments</a><br>
+<a href="/FinalProject2610/MainPage.jsp">home</a> <a href="/FinalProject2610/flights">all FlightSegments</a><br>
 
 <%if(request.getAttribute("error") != null){ %>
 <h2>Please enter valid data</h2>

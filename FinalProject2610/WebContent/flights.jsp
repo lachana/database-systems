@@ -10,7 +10,7 @@
 <title>Flights Manager</title>
 </head>
 <body>
-<a href="/FinalProject2610/Mainpage.jsp">home</a><br>
+<a href="/FinalProject2610/MainPage.jsp">home</a><br>
 	<h2>All available flights</h2>
 	<table border = "1">
 		<thead>
@@ -34,7 +34,7 @@
 			for(FlightSegmentBean f : allFlights) {
 			 %>
 		<tr>
-				<td><% out.print(f.getFlight_number()); %></td>
+				<td><a href="/FinalProject2610/personnel?flightNumber=<%=f.getFlight_number()%>&date=<%=f.getDate()%>&airline=<%=f.getOperated_by()%>"><%=f.getFlight_number()%></a></td>
 				<td><%= f.getDate() %></td>
 				<td><% out.print(f.getGate_nr()); %></td>
 				<td><% out.print(f.getBoarding_time()); %></td>
