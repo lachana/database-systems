@@ -93,6 +93,7 @@ public class FlightTicketDAO extends AbstractDAO {
 			pStmt6.setString(1, flight.getFlight_number());
 			pStmt6.setDate(2, flight.getDate());
 			pStmt6.setInt(3, journey.getjId());
+			pStmt6.execute();
 			
 			connection.commit();
 		}

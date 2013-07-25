@@ -73,12 +73,12 @@ public class FlightSegmentServletAirline extends HttpServlet {
 			flight.setOperated_by(request.getParameter("operatedBy"));
 			flight.setFlightBy(Integer.parseInt(request.getParameter("flightBy")));
 			flights.addNewFlight(flight);
-			
+			response.sendRedirect("/FinalProject2610/flights");
 		} catch (Throwable e) {
 			request.setAttribute("error", true);
-			RequestDispatcher view = request.getRequestDispatcher("flights.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/flights");
 			view.forward(request, response);
 		}
-        response.sendRedirect("/FinalProject2610/flights");
+        
 	}
 }

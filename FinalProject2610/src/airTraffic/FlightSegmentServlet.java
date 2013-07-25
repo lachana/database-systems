@@ -93,13 +93,10 @@ public class FlightSegmentServlet extends HttpServlet {
 			String destination = request.getParameter("destination");
 			//validate inputs
 			LinkedList<FlightSegmentBean> flights = (LinkedList<FlightSegmentBean>)session.getAttribute("flightSegments");
-			if(!flights.isEmpty()){
-				FlightSegmentBean flight = flights.getLast();
-				if(!departure.equals(flight.getArrival_airport()) || date.before(flight.getDate())){
-					request.setAttribute("teleport", true);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/FlightSegment.jsp");
-					dispatcher.forward(request, response);
-				}
+			if(!flights.isEmpty() && (!departure.equals(flights.getLast().getArrival_airport()) || date.getTime() < flights.getLast().getDate().getTime())){
+				request.setAttribute("teleport", true);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/FlightSegment.jsp");
+				dispatcher.forward(request, response);
 			} else {
 			//get flightSegments according to inputs
 			FlightSegmentDAO fDao = new FlightSegmentDAO();
